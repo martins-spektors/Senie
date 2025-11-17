@@ -59,11 +59,13 @@
             <td>[(${line.dataHtml})]</td>
           </tr>
         </table>
-        <img
-          th:if="${facsimile} != null"
-          th:src="${facsimile}"
-          alt="Rakstu darba oriģināla faksimils"
-        >
+        <div>
+          <img
+            th:if="${facsimile} != null"
+            th:src="${facsimile}"
+            alt="Rakstu darba oriģināla faksimils"
+          >
+        </div>
       </div>
 
     </div>
