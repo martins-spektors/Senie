@@ -42,20 +42,26 @@ class BookController(
         model: Model,
     ): String {
         // Book / collection
-        val book = bookRepo.findByFullSource(source) ?: throw bookNotFound(source)
-        val collection = book.collectionCode?.let(bookRepo::findCollection)
-        model.addAttribute("pageTitle", collection?.displayTitle ?: book.displayTitle)
+        val currentBook = bookRepo.findByFullSource(source) ?: throw bookNotFound(source)
+        val collection = currentBook.collectionCode?.let(bookRepo::findCollection)
+        model.addAttribute("pageTitle", collection?.displayTitle ?: currentBook.displayTitle)
         if (collection != null) {
+            val books = bookRepo.findAllInCollection(currentBook.collectionCode)
+                .sortedBy { it.orderInCollection }
+            val prevBook = books[(books.indexOf(currentBook) - 1).coerceAtLeast(0)]
+                .takeUnless { it == currentBook }
+            val nextBook = books[(books.indexOf(currentBook) + 1).coerceAtMost(books.lastIndex)]
+                .takeUnless { it == currentBook }
+            
             model.addAttribute("collection", collection)
-            model.addAttribute(
-                "books",
-                bookRepo.findAllInCollection(book.collectionCode).sortedBy { it.orderInCollection },
-            )
+            model.addAttribute("books", books)
+            model.addAttribute("prevBook", prevBook)
+            model.addAttribute("nextBook", nextBook)
         }
-        model.addAttribute("currentBook", book)
+        model.addAttribute("currentBook", currentBook)
 
         // Pages
-        val pages = pageRepo.findAllPagesInBook(book.fullSource).map { page ->
+        val pages = pageRepo.findAllPagesInBook(currentBook.fullSource).map { page ->
             if (page.order == 0)
                 page.name = "0"
             page
@@ -63,7 +69,7 @@ class BookController(
         val hasPages = pages.any { it.order > 1 }
         val currentPage = pageParam?.let { pageName ->
             pages.firstOrNull { page -> page.name == pageName }
-                ?: throw CommonFailures.pageNotFound(pageName, book.fullSource)
+                ?: throw CommonFailures.pageNotFound(pageName, currentBook.fullSource)
         } ?: pages.first()
         val prevPage = pages[(pages.indexOf(currentPage) - 1).coerceAtLeast(0)]
             .takeUnless { it == currentPage }
@@ -80,7 +86,7 @@ class BookController(
         val displayPages =
             if (hasPages) listOf(currentPage.order)
             else (0..1).toList()
-        val lines = contentRepo.findAllBySourceAndPageSortOrderIn(book.fullSource, displayPages)
+        val lines = contentRepo.findAllBySourceAndPageSortOrderIn(currentBook.fullSource, displayPages)
 
         model.addAttribute("lines", lines)
 
