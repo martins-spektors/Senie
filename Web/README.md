@@ -19,8 +19,8 @@ dependencies etc., on first opening of the project.
 
 # Running
 
-Run locally with `gradlew bootRun`, or create IntelliJ IDEA run configuration from the subproject's `main()`
-function, located in its `Main.kt` file.
+Run locally with `gradlew bootRun`, or, in IntelliJ IDEA, use the green "run" icon at the `main()` function
+line in the `Main.kt` file to create a run configuration.
 
 ## Deployment
 

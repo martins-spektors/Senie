@@ -63,15 +63,11 @@ class BookController(
         model.addAttribute("currentBook", currentBook)
 
         // Pages
-        val pages = pageRepo.findAllPagesInBook(currentBook.fullSource).map { page ->
-            if (page.order == 0)
-                page.name = "0"
-            page
-        }.sortedBy { it.order }
+        val pages = pageRepo.findAllPagesInBook(currentBook.fullSource).sortedBy { it.order }
         val hasPages = pages.any { it.order > 1 }
-        val currentPage = pageParam?.let { pageName ->
-            pages.firstOrNull { page -> page.name == pageName }
-                ?: throw CommonFailures.pageNotFound(pageName, currentBook.fullSource)
+        val currentPage = pageParam?.let { pageLink ->
+            pages.firstOrNull { page -> page.linkName == pageLink }
+                ?: throw CommonFailures.pageNotFound(pageLink, currentBook.fullSource)
         } ?: pages.first()
         val prevPage = pages[(pages.indexOf(currentPage) - 1).coerceAtLeast(0)]
             .takeUnless { it == currentPage }

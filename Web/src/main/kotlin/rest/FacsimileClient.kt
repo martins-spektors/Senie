@@ -45,9 +45,9 @@ class FacsimileClient(
             }
         val dirUrl = "$baseUrl/${book.fullSource.replace("::", "/")}/${book.itemCode}"
 
-        logger.debug("Looking for facsimile image for ${book.fullSource}, page ${page.name} (${page.order})...")
+        logger.debug("Looking for facsimile image for ${book.fullSource}, page ${page.displayName} (${page.order})...")
         return permutations.firstNotNullOfOrNull { (length, extension) ->
-            val fileName = "${page.name}".padStart(length, '0') + ".$extension"
+            val fileName = "${page.displayName}".padStart(length, '0') + ".$extension"
             val fileUrl = "$dirUrl/$fileName"
             val isFound = restClient
                 .head().uri(fileUrl)
