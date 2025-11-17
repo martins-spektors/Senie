@@ -6,7 +6,7 @@ import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 /**
- * Should match the the project namespace in build config.
+ * Should match the project namespace in build config.
  */
 const val ROOT_PACKAGE: String = "lv.ailab.senie"
 
