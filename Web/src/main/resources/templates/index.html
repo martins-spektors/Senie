@@ -70,7 +70,7 @@
     <h1><span th:text="${century.key}">99</span>. gadsimts</h1>
     <table>
       <tr th:each="book: ${century.value}">
-        <td><a href="/books/Ab1234_BC" th:href="${book.urlPath}" th:text="${book.displayCode}">Ab1234_BC</a></td>
+        <td class="address"><a href="/books/Ab1234_BC" th:href="${book.urlPath}" th:text="${book.displayCode}">Ab1234_BC</a></td>
         <td th:text="|- ${book.name}|">- Valpurģu nakts</td>
       </tr>
     </table>

@@ -39,6 +39,15 @@ section {
     }
 }
 
+a {
+  color: #283d14;
+}
+
+a:visited {
+  color: #141e0a;
+}
+
+
 .address {
     font-family: "Libertinus Sans", sans-serif;
     font-stretch: condensed;
