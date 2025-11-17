@@ -57,3 +57,12 @@ a:visited {
 {
     font-size:smaller;
 }
+
+footer
+{
+    color: #606060;
+    text-align: center;
+    font-size: 90%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
