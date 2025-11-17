@@ -65,7 +65,13 @@ class BookController(
             pages.firstOrNull { page -> page.name == pageName }
                 ?: throw CommonFailures.pageNotFound(pageName, book.fullSource)
         } ?: pages.first()
+        val prevPage = pages[(pages.indexOf(currentPage) - 1).coerceAtLeast(0)]
+            .takeUnless { it == currentPage }
+        val nextPage = pages[(pages.indexOf(currentPage) + 1).coerceAtMost(pages.lastIndex)]
+            .takeUnless { it == currentPage }
         if (hasPages) {
+            model.addAttribute("prevPage", prevPage)
+            model.addAttribute("nextPage", nextPage)
             model.addAttribute("pages", pages)
             model.addAttribute("currentPage", currentPage)
         }

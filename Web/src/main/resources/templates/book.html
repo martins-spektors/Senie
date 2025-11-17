@@ -22,9 +22,13 @@
 
       <!-- List of pages -->
       <nav id="pageList" th:if="${pages} != null">
+        <label for="pageSelector">Lappuse:</label>
+        <form action="/goto" th:if="${prevPage} != null">
+          <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
+          <input type="submit" name="page" th:value="${prevPage.name}">
+        </form>
         <form action="/goto">
           <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
-          <label for="pageSelector">Lappuse:</label>
           <select id="pageSelector" name="page">
             <option
               th:each="page : ${pages}"
@@ -34,6 +38,10 @@
             ></option>
           </select>
           <button type="submit">Atvērt</button>
+        </form>
+        <form action="/goto" th:if="${nextPage} != null">
+          <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
+          <input type="submit" name="page" th:value="${nextPage.name}">
         </form>
       </nav>
 
