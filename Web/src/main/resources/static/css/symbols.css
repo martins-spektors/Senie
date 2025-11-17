@@ -1,0 +1,18 @@
+td {
+    vertical-align: top;
+}
+.symbol {
+    font-size:larger;
+}
+
+.count {
+    text-align:center;
+}
+
+.ucode {
+    text-align:center;
+    font-family: 'Libertinus Mono', monospace;
+}
+
+
+

@@ -34,3 +34,13 @@ section {
         padding: 5px 10px;
     }
 }
+
+.address {
+    font-family: "Libertinus Sans", sans-serif;
+    font-stretch: condensed;
+}
+
+.extra-small
+{
+    font-size:smaller;
+}
