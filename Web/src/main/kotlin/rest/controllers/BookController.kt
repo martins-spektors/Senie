@@ -5,6 +5,7 @@ import lv.ailab.senie.db.repositories.ContentRepository
 import lv.ailab.senie.db.repositories.PageRepository
 import lv.ailab.senie.rest.CommonFailures
 import lv.ailab.senie.rest.CommonFailures.bookNotFound
+import lv.ailab.senie.rest.FacsimileClient
 import lv.ailab.senie.utils.urlEncode
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView
 class BookController(
     private val bookRepo: BookRepository,
     private val contentRepo: ContentRepository,
+    private val facsimileClient: FacsimileClient,
     private val pageRepo: PageRepository,
 ) {
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -52,7 +54,7 @@ class BookController(
                 .takeUnless { it == currentBook }
             val nextBook = books[(books.indexOf(currentBook) + 1).coerceAtMost(books.lastIndex)]
                 .takeUnless { it == currentBook }
-            
+
             model.addAttribute("collection", collection)
             model.addAttribute("books", books)
             model.addAttribute("prevBook", prevBook)
@@ -88,7 +90,18 @@ class BookController(
             else (0..1).toList()
         val lines = contentRepo.findAllBySourceAndPageSortOrderIn(currentBook.fullSource, displayPages)
 
+        // Page 0 is "Titullapa" and unpaged books are all page 1
+        val lookupPage = currentPage.let {
+            when {
+                !hasPages -> it.copy(name = "1")
+                it.name == "0" -> it.copy(name = "Titullapa")
+                else -> it
+            }
+        }
+        val facsimile = facsimileClient.findUrlFor(currentBook, lookupPage)
+
         model.addAttribute("lines", lines)
+        model.addAttribute("facsimile", facsimile)
 
         return "book"
     }

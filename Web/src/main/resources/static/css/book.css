@@ -1,4 +1,4 @@
-nav.books, nav.pages {
+nav.books, nav.pages, #pageContent {
     display: flex;
 }
 
