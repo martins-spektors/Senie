@@ -1,3 +1,7 @@
-#pageList, #bookList {
+nav.books, nav.pages {
     display: flex;
+}
+
+form.books, form.pages {
+    white-space: nowrap;
 }
