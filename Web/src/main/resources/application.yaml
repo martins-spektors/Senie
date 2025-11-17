@@ -8,6 +8,8 @@ db:
   user: senie
   pass: senie
 
+senie.data.base-url: https://data.app.ailab.lv/senie
+
 spring:
   datasource:
     url: jdbc:mysql://${db.host}:${db.port}/${db.name}

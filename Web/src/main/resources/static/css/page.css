@@ -21,7 +21,6 @@ p {
 
 section {
     background-color: #CCFF99;
-    margin-left: 7.5%;
 
     & > div, & > table, & > nav {
         padding: 0.8rem;
@@ -30,7 +29,7 @@ section {
     & h1 {
         font-size: 160%;
         background-color: #669933;
-        margin: 0 0 0 -7.5%;
+        margin: 0;
         color: var(--bgcolor);
         padding: 5px 10px;
     }
