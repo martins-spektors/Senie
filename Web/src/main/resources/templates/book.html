@@ -6,8 +6,11 @@
     <div>
       <!-- List of books (only for collections) -->
       <nav id="bookList" th:if="${collection} != null">
+        <label for="bookSelector">Rakstu darbs:</label>
+        <form action="/goto" th:if="${prevBook} != null">
+          <input type="submit" name="source" th:value="${prevBook.fullSource}">
+        </form>
         <form action="/goto">
-          <label for="bookSelector">Rakstu darbs:</label>
           <select id="bookSelector" name="source">
             <option
               th:each="book : ${books}"
@@ -17,6 +20,9 @@
             ></option>
           </select>
           <button type="submit">Atvērt</button>
+        </form>
+        <form action="/goto" th:if="${nextBook} != null">
+          <input type="submit" name="source" th:value="${nextBook.fullSource}"/>
         </form>
       </nav>
 
