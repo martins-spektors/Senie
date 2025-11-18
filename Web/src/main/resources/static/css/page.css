@@ -73,3 +73,22 @@ td.index-booksep
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
+
+section.hanging-page
+{
+    margin-left: 7%;
+    padding-bottom: 1em;
+    & h1 {
+        margin: 0 0 0 -7%;
+    }
+    & div ul {
+        list-style-type: none;
+        padding: 0;
+    }
+}
+
+strong
+{
+    font-family: "Libertinus Sans", sans-serif;
+    color: #141e0a;
+}

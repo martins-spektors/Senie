@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::main})}">
 <main>
-  <section>
+  <section class="hanging-page">
     <h1>SENIE</h1>
     <div>
     
@@ -39,7 +39,7 @@
 	  </p>
     </div>
   </section>
-  <section>
+  <section class="hanging-page">
     <h1>Noderīgi</h1>
     <div>
       <ul>
@@ -66,7 +66,7 @@
       </ul>
     </div>
   </section>
-  <section th:each="century : ${booksByCentury}">
+  <section class="hanging-page" th:each="century : ${booksByCentury}">
     <h1><span th:text="${century.key}">99</span>. gadsimts</h1>
     <table>
       <tr th:each="book: ${century.value}">
