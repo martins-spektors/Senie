@@ -6,11 +6,11 @@
     <div>
       <!-- List of books (only for collections) -->
       <nav class="books" th:if="${collection} != null">
-        <label for="bookSelector">Rakstu darbs:</label>
-        <form action="/goto" th:if="${prevBook} != null">
+        <label for="bookSelector">Nodaļa:</label>
+        <form class="nav-block" action="/goto" th:if="${prevBook} != null">
           <input type="submit" name="source" th:value="${prevBook.fullSource}">
         </form>
-        <form action="/goto" class="books">
+        <form class="books nav-block" action="/goto">
           <select id="bookSelector" name="source">
             <option
               th:each="book : ${books}"
@@ -21,7 +21,7 @@
           </select>
           <button type="submit">Atvērt</button>
         </form>
-        <form action="/goto" th:if="${nextBook} != null">
+        <form class="nav-block" action="/goto" th:if="${nextBook} != null">
           <input type="submit" name="source" th:value="${nextBook.fullSource}"/>
         </form>
       </nav>
@@ -29,12 +29,12 @@
       <!-- List of pages -->
       <nav class="pages" th:if="${pages} != null">
         <label for="pageSelector">Lappuse:</label>
-        <form action="/goto" th:if="${prevPage} != null">
+        <form class="nav-block" action="/goto" th:if="${prevPage} != null">
           <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
           <input type="hidden" name="page" th:value="${prevPage.linkName}">
-          <button th:text="${prevPage.displayName}"></button>
+          <button th:text="|Iepriekšējā (${prevPage.displayName})|"></button>
         </form>
-        <form action="/goto" class="pages">
+        <form class="pages nav-block" action="/goto">
           <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
           <select id="pageSelector" name="page">
             <option
@@ -46,10 +46,10 @@
           </select>
           <button type="submit">Atvērt</button>
         </form>
-        <form action="/goto" th:if="${nextPage} != null">
+        <form class="nav-block" action="/goto" th:if="${nextPage} != null">
           <input type="hidden" name="source" th:value="${currentBook.fullSource}"/>
           <input type="hidden" name="page" th:value="${nextPage.linkName}">
-          <button th:text="${nextPage.displayName}"></button>
+          <button th:text="|Nākamā (${nextPage.displayName})|"></button>
         </form>
       </nav>
 
@@ -57,7 +57,7 @@
       <div id="pageContent">
         <table>
           <tr th:each="line : ${lines}">
-            <td th:text="${line.address}" class="address">Ab1234_BC_--_1</td>
+            <td th:text="${line.address}" class="address extra-small book-address">Ab1234_BC_--_1</td>
             <td>[(${line.dataHtml})]</td>
           </tr>
         </table>

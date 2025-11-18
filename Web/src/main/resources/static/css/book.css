@@ -8,6 +8,9 @@ form.books, form.pages, #pageContent {
 
 #pageContent {
     align-items: start;
+    & td {
+        padding-right: 0.5em;
+    }
     & > div {
         & > img {
             width: 100%;
@@ -15,4 +18,49 @@ form.books, form.pages, #pageContent {
             max-height: 720px;
         }
     }
+
 }
+
+nav.books, nav.pages
+{
+    padding-bottom: 1em;
+}
+
+.nav-block
+{
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+}
+
+label
+{
+    font-family: "Libertinus Sans", sans-serif;
+    padding-right: 0.2em;
+}
+
+button, input, select
+{
+    background-color: #d1e0c1;
+    border-color: #141e0a;
+    border-width: 1px;
+    padding: 3px;
+}
+
+.book-address
+{
+    padding-right: 0.5em;
+    vertical-align: bottom;
+}
+
+.source-atcode
+{
+    font-family: 'Libertinus Mono', monospace;
+    font-size: 85%;
+    color: #606060;
+}
+
+.source-correction
+{
+    color: #606060;
+}
+
