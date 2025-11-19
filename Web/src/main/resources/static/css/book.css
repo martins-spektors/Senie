@@ -1,66 +1,58 @@
-nav.books, nav.pages, #pageContent {
-    display: flex;
-}
-
-form.books, form.pages, #pageContent {
-    white-space: nowrap;
-}
-
-#pageContent {
-    align-items: start;
-    & td {
-        padding-right: 0.5em;
+#book {
+    nav.books, nav.pages, #pageContent {
+        display: flex;
     }
-    & > div {
-        & > img {
-            width: 100%;
-            height: 100%;
-            max-height: 720px;
+
+    form.books, form.pages, #pageContent {
+        white-space: nowrap;
+    }
+
+    label {
+        font-family: var(--sans-font);
+        padding-right: 0.3rem;
+    }
+
+    #pageContent {
+        align-items: start;
+        & td {
+            padding-right: 0.4rem;
         }
+        & > div {
+            & > img {
+                width: 100%;
+                height: 100%;
+                max-height: 720px;
+            }
+        }
+
     }
 
-}
+    nav.books, nav.pages
+    {
+        padding-bottom: 1rem;
+    }
 
-nav.books, nav.pages
-{
-    padding-bottom: 1em;
-}
+    .nav-block
+    {
+        padding-right: 0.4rem;
+        padding-left: 0.4rem;
+    }
 
-.nav-block
-{
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-}
+    .address
+    {
+        vertical-align: bottom;
+        font-size:75%;
+    }
 
-label
-{
-    font-family: "Libertinus Sans", sans-serif;
-    padding-right: 0.2em;
-}
+    .source-atcode
+    {
+        font-family: var(--mono-font);
+        font-size: 85%;
+        color: var(--gray-text-color);
+    }
 
-button, input, select
-{
-    background-color: #d1e0c1;
-    border-color: #141e0a;
-    border-width: 1px;
-    padding: 3px;
+    .source-correction
+    {
+        color: var(--gray-text-color);
+    }
 }
-
-.book-address
-{
-    padding-right: 0.5em;
-    vertical-align: bottom;
-}
-
-.source-atcode
-{
-    font-family: 'Libertinus Mono', monospace;
-    font-size: 85%;
-    color: #606060;
-}
-
-.source-correction
-{
-    color: #606060;
-}
-

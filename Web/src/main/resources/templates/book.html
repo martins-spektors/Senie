@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::main})}">
-<main>
+<main id="book">
   <section>
     <h1 th:text="${pageTitle}">Grāmata (Ab1234_CD)</h1>
     <div>
@@ -57,7 +57,7 @@
       <div id="pageContent">
         <table>
           <tr th:each="line : ${lines}">
-            <td th:text="${line.address}" class="address extra-small book-address">Ab1234_BC_--_1</td>
+            <td th:text="${line.address}" class="address">Ab1234_BC_--_1</td>
             <td>[(${line.dataHtml})]</td>
           </tr>
         </table>

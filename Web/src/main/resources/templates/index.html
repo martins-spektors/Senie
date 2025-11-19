@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: page(~{::main})}">
-<main>
-  <section class="hanging-page">
+<main id="index">
+  <section>
     <h1>SENIE</h1>
     <div>
     
@@ -23,7 +23,7 @@
 	    tā paverot iespēju skaidrāk un precīzāk attēlot avotos izmantoto simbolu daudzveidību.
 	  </p>
       <p>2022.&nbsp;gadā, korpusu modernizējot, tā dati tika publicēti Nacionālo korpusu kolekcijā (NKK)
-	    <a href="https://korpuss.lv/" target="_blank">korpuss.lv</a> un indeksēti _NoSketch Engine_ platformā.
+	    <a href="https://korpuss.lv/" target="_blank">korpuss.lv</a> un indeksēti <em>NoSketch Engine</em> platformā.
 	    Tajā meklēšana ir iespējama gan vēsturiskajā, gan mūsdienu rakstībā,
 		savukārt šī vietne kalpo kā latviešu seno tekstu bibliotēka, ļaujot pārskatīt pilnus avotu tekstus un
 		faksimilus. No 2025.&nbsp;gadā arī visi šīs vietnes teksti ir lasāmi tikai <em>Unicode</em> kodējumā.
@@ -39,7 +39,7 @@
 	  </p>
     </div>
   </section>
-  <section class="hanging-page">
+  <section>
     <h1>Noderīgi</h1>
     <div>
       <ul>
@@ -66,12 +66,12 @@
       </ul>
     </div>
   </section>
-  <section class="hanging-page" th:each="century : ${booksByCentury}">
+  <section th:each="century : ${booksByCentury}">
     <h1><span th:text="${century.key}">99</span>. gadsimts</h1>
     <table>
       <tr th:each="book: ${century.value}">
         <td class="address"><a href="/books/Ab1234_BC" th:href="${book.urlPath}" th:text="${book.displayCode}">Ab1234_BC</a></td>
-        <td class="index-booksep">—</td>
+        <td class="booksep">—</td>
         <td th:text="${book.name}">Valpurģu nakts</td>
       </tr>
     </table>
