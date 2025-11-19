@@ -19,6 +19,10 @@ p {
     }
 }
 
+td {
+    vertical-align: top;
+}
+
 section {
     background-color: #CCFF99;
 
