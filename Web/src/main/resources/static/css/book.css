@@ -1,18 +1,58 @@
-nav.books, nav.pages, #pageContent {
-    display: flex;
-}
+#book {
+    nav.books, nav.pages, #pageContent {
+        display: flex;
+    }
 
-form.books, form.pages, #pageContent {
-    white-space: nowrap;
-}
+    form.books, form.pages, #pageContent {
+        white-space: nowrap;
+    }
 
-#pageContent {
-    align-items: start;
-    & > div {
-        & > img {
-            width: 100%;
-            height: 100%;
-            max-height: 720px;
+    label {
+        font-family: var(--sans-font);
+        padding-right: 0.3rem;
+    }
+
+    #pageContent {
+        align-items: start;
+        & td {
+            padding-right: 0.4rem;
         }
+        & > div {
+            & > img {
+                width: 100%;
+                height: 100%;
+                max-height: 720px;
+            }
+        }
+
+    }
+
+    nav.books, nav.pages
+    {
+        padding-bottom: 1rem;
+    }
+
+    .nav-block
+    {
+        padding-right: 0.4rem;
+        padding-left: 0.4rem;
+    }
+
+    .address
+    {
+        vertical-align: bottom;
+        font-size:75%;
+    }
+
+    .source-atcode
+    {
+        font-family: var(--mono-font);
+        font-size: 85%;
+        color: var(--gray-text-color);
+    }
+
+    .source-correction
+    {
+        color: var(--gray-text-color);
     }
 }

@@ -8,8 +8,12 @@
 
 .ucode {
     text-align:center;
-    font-family: 'Libertinus Mono', monospace;
+    font-family: var(--mono-font);
     font-size: 90%;
+}
+
+.symbol-table .address {
+    font-size:75%;
 }
 
 
