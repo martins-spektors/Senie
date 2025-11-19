@@ -19,6 +19,10 @@ p {
     }
 }
 
+td {
+    vertical-align: top;
+}
+
 section {
     background-color: #CCFF99;
 
@@ -33,4 +37,14 @@ section {
         color: var(--bgcolor);
         padding: 5px 10px;
     }
+}
+
+.address {
+    font-family: "Libertinus Sans", sans-serif;
+    font-stretch: condensed;
+}
+
+.extra-small
+{
+    font-size:smaller;
 }

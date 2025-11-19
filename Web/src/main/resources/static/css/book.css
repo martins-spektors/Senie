@@ -8,9 +8,6 @@ form.books, form.pages, #pageContent {
 
 #pageContent {
     align-items: start;
-    & td {
-        vertical-align: top;
-    }
     & > div {
         & > img {
             width: 100%;
